@@ -1,0 +1,26 @@
+<h1>All Appointments:</h1>
+
+<table>
+  <tr>
+    <th>Appointment Date & Time</th>
+    <th>         </th><th>         </th><th>         </th>
+    <th>Still Valid</th>
+    <th>Want to Cancel?</th>
+  </tr>
+ 
+  <% @appointments.each do |appointment| %>
+    <tr>
+      <td><%= appointment.Date %></td>
+      <th>         </th><th>         </th><th>         </th>
+      <td><%= appointment.Valid %></td>
+      <td><b><%= link_to 'Cancel Appointment', appointment_path(appointment),
+              method: :delete,
+              data: { confirm: 'Are you sure you want to cancel this appointment?' } %></b></td> 
+    </tr>
+  <% end %>
+</table>
+
+<p> <b> <%= link_to 'New Appointment', new_appointment_path %> </b> </p>
+
+<p><b> <%= link_to 'Back to Welcome Page', :controller => :welcome, :action => :index %> </b></p>
+

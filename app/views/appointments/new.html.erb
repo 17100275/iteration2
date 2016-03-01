@@ -1,0 +1,19 @@
+<h1>New Appointment:</h1>
+
+<%= form_for :appointment, url: appointments_path do |f| %>
+
+  <p>
+
+    <p>
+      <b> <%= f.label :Date %><br> </b>
+      <%= f.datetime_select :Date, order: [:day, :month, :year, :hour], start_year: 2016, end_year: 2026, start_hour: 15, end_hour: 23%>
+    </p>
+
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<b> <%= link_to 'Back to All Appointments', appointments_path %> </b>
