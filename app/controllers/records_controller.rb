@@ -1,9 +1,14 @@
 class RecordsController < ApplicationController
+    before_action :authenticate_user!, except: [:index, :show]
+
     def index
         @records = Record.all
     end
 
     def new
+        # @record = Record.new
+
+        @record = current_user.records.build
     end
 
     def edit
@@ -13,7 +18,7 @@ class RecordsController < ApplicationController
     def update
         @record = Record.find(params[:id])
  
-        if @record.update(movie_params)
+        if @record.update(records_params)
             redirect_to @record
         else
             render 'edit'
@@ -26,7 +31,9 @@ class RecordsController < ApplicationController
 
     def create
         # render plain: params[:record].inspect
-        @record = Record.new(movie_params)
+
+        @record = current_user.records.build(records_params)
+        # @record = Record.new(records_params)
         if @record.save
             redirect_to @record
         else
@@ -44,7 +51,7 @@ class RecordsController < ApplicationController
     end
 
     private
-        def movie_params
+        def records_params
             params.require(:record).permit(:Prescriptions, :Symptoms, :Day, :Month, :Year)
         end
 end

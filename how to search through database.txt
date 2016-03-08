@@ -1,0 +1,4 @@
+@app = Appointment.where(:Valid => "No") //gives me all records where valid is no
+@app.length //gives me number of records
+@app[0].user_id // accessing user id of the record
+current_user.id // access
