@@ -6,6 +6,28 @@ class AppointmentsController < ApplicationController
         @appointment = current_user.appointments.build
     end
 
+    def search_get
+    end
+
+    def search_show
+        update_old_appt_if_any
+        @query = Appointment.new(appointment_params)
+        # render plain: @query[Date].inspect
+        # @query =  params[:appointment]
+        # @query =  params.require(:appointment).permit(:Date)
+        # render plain: @query.inspect.to_s
+        # (@appointment[Date]).year
+
+        @all = Appointment.all
+        @all_answers = []
+
+        for i in 0..(@all.length - 1)
+            if ( ((@all[i][Date]).year==@query[Date].year) && ((@all[i][Date]).month==@query[Date].month) && ((@all[i][Date]).day==@query[Date].day))
+                @all_answers = @all_answers + [@all[i]]
+            end
+        end       
+    end
+
     def create
         # render plain: params[:appointment].inspect
 
@@ -79,6 +101,7 @@ class AppointmentsController < ApplicationController
         # end  
         update_old_appt_if_any 
         @appointments = Appointment.all
+        @appointments = @appointments.sort_by(&:Date)
 
     end
 

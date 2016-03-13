@@ -1,0 +1,20 @@
+<h1>Search Resullts:</h1>
+
+<table>
+  <tr>
+    <th>Appointment Date & Time</th>
+    <th>Still Valid</th>
+    <th>User</th>
+  </tr>
+ 
+  <% for i in 0..(@all_answers.length - 1) %>
+    <tr>
+        <td><%= @all_answers[i].Date %></td>
+        <td><%= @all_answers[i].Valid %></td>
+        <td><%= @all_answers[i].user.email %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><b> <%= link_to 'Back to Search Appointments', :controller => :appointments, :action => :search_get %> </b></p>
+<p><b> <%= link_to 'Back to All Appointmets', :controller => :appointments, :action => :index %> </b></p>

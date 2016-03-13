@@ -6,7 +6,7 @@
 
     <p>
       <b> <%= f.label :Date %><br> </b>
-      <%= f.datetime_select :Date, order: [:day, :month, :year, :hour], start_year: 2016, end_year: 2026, start_hour: 15, end_hour: 23%>
+      <%= f.datetime_select :Date, order: [:day, :month, :year, :hour], :discard_minute => true, start_year: 2016, end_year: 2026, start_hour: 15, end_hour: 23%>
     </p>
 
   </p>

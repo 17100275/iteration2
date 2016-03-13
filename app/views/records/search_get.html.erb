@@ -1,0 +1,15 @@
+<h1>Search Records by Patient's Email ID:</h1>
+
+<%= form_for :record, url: "/search_get/records", method: :put  do |f| %>
+
+  <p>
+    <b> <%= f.label :Email %><br> </b>
+    <%= f.text_field :Email %>
+  </p>
+
+  <p>
+    <%= f.submit "Search by Email"%>
+  </p>
+<% end %>
+
+<b> <%= link_to 'Back to All Records', records_path %> </b>

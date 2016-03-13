@@ -4,9 +4,10 @@ class CreateRecords < ActiveRecord::Migration
       t.text :Prescriptions
       t.text :Symptoms
 
-      t.integer :Day
-      t.integer :Month
-      t.integer :Year
+      t.date :Date
+      # t.integer :Day
+      # t.integer :Month
+      # t.integer :Year
 
       # t.datetime :release_date
 

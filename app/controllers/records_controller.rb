@@ -3,6 +3,30 @@ class RecordsController < ApplicationController
 
     def index
         @records = Record.all
+        @records = @records.sort_by(&:Date)
+    end
+
+    def search_get
+    end
+
+    def search_show
+        # render plain: params[:Email].inspect
+        @query =  params[:record][:Email]
+        # render plain: @query.inspect
+        @all = Record.all
+        @all_answers = []
+
+        for i in 0..(@all.length - 1)
+            if (@all[i].user.email==@query)
+                @all_answers = @all_answers + [@all[i]]
+            end
+        end
+
+        # @allemails = ""
+        # for i in 0..(@all_answers.length - 1)
+        #     @allemails = @allemails << @all_answers[i].user.email
+        # end
+        # render plain: @allemails.inspect
     end
 
     def new
@@ -52,6 +76,7 @@ class RecordsController < ApplicationController
 
     private
         def records_params
-            params.require(:record).permit(:Prescriptions, :Symptoms, :Day, :Month, :Year)
+            # temp_hash = params.require(:appointment).permit(:Date)
+            params.require(:record).permit(:Prescriptions, :Symptoms, :Date)
         end
 end

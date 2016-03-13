@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  # get "/appointments/showallinvalid" => "appointments#showallinvalid"
+  get "/records/search_get" => "records#search_get"
+  put "/search_get/records" => "records#search_show"
+
+  get "/appointments/search_get" => "appointments#search_get"
+  put "/search_get/appointments" => "appointments#search_show"
   
   get 'appointments/index'
   get 'welcome/index'

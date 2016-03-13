@@ -1,0 +1,15 @@
+<h1>Search Appointments by Date:</h1>
+
+<%= form_for :appointment, url: "/search_get/appointments", method: :put  do |f| %>
+
+    <p>
+      <b> <%= f.label :Date %><br> </b>
+      <%= f.datetime_select :Date, order: [:day, :month, :year, :hour], :discard_hour => true, start_year: 2016, end_year: 2026, start_hour: 15, end_hour: 23%>
+    </p>
+
+  <p>
+    <%= f.submit "Search by Date"%>
+  </p>
+<% end %>
+
+<b> <%= link_to 'Back to All Appointments', appointments_path %> </b>

@@ -24,9 +24,7 @@ ActiveRecord::Schema.define(version: 20160307121638) do
   create_table "records", force: :cascade do |t|
     t.text     "Prescriptions"
     t.text     "Symptoms"
-    t.integer  "Day"
-    t.integer  "Month"
-    t.integer  "Year"
+    t.date     "Date"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.integer  "user_id"
